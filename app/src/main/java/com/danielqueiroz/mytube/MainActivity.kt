@@ -62,12 +62,9 @@ class MainActivity : AppCompatActivity() {
 
         motion_container.setTransitionListener(object : MotionLayout.TransitionListener{
             override fun onTransitionStarted(motionLayout: MotionLayout?, startId: Int, endId: Int) {
-                println("Transition Started $startId $endId")
             }
 
             override fun onTransitionChange(motionLayout: MotionLayout?, startId: Int, endId: Int, progress: Float) {
-                println("Transition Change $startId $endId $progress")
-
                 if (progress > 0.5f)
                     view_layer.alpha = 1.0f - progress
                 else
@@ -75,11 +72,9 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onTransitionCompleted(motionLayout: MotionLayout?, currentId: Int) {
-                println("Transition Completed $currentId")
             }
 
             override fun onTransitionTrigger(motionLayout: MotionLayout?, triggerId: Int, positive: Boolean, progress: Float) {
-                println("Transition Trigger $triggerId $positive $progress")
             }
 
         })

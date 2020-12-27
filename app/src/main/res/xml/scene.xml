@@ -16,6 +16,26 @@
       <OnClick app:clickAction="toggle" app:targetId="@id/video_player" />
       -->
 
+        <KeyFrameSet>
+            <KeyAttribute app:motionTarget="@id/surface_player"
+                android:translationX="0dp"
+                android:scaleX="1"
+                android:scaleY="1"
+                app:framePosition="92"
+                />
+            <KeyAttribute app:motionTarget="@id/video_player"
+                android:translationX="0dp"
+                android:scaleX="1"
+                android:scaleY="1"
+                app:framePosition="92"
+                />
+            <KeyAttribute app:motionTarget="@id/video_player_title"
+                android:scaleX="1"
+                android:scaleY="1"
+                app:framePosition="92"
+                />
+        </KeyFrameSet>
+
     </Transition>
 
     <ConstraintSet  android:id="@+id/start">
@@ -26,6 +46,23 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintDimensionRatio="16:9"
             />
+
+        <Constraint
+            android:id="@+id/surface_player"
+            app:layout_constraintBottom_toBottomOf="@id/video_player"
+            app:layout_constraintEnd_toEndOf="@id/video_player"
+            app:layout_constraintTop_toTopOf="@id/video_player"
+            app:layout_constraintStart_toStartOf="@id/video_player"
+            />
+
+        <Constraint
+            android:id="@+id/video_player_title"
+            app:layout_constraintTop_toTopOf="@id/video_player"
+            app:layout_constraintBottom_toBottomOf="@id/video_player"
+            app:layout_constraintEnd_toEndOf="@id/video_player"
+            app:layout_constraintStart_toStartOf="@id/video_player"
+            />
+
     </ConstraintSet>
 
     <ConstraintSet  android:id="@+id/end">
@@ -38,7 +75,30 @@
             android:layout_marginBottom="18dp"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
+            android:scaleX="0.4"
+            android:translationX="-120dp"
             />
+
+        <Constraint
+            android:id="@+id/surface_player"
+            app:layout_constraintBottom_toBottomOf="@id/video_player"
+            app:layout_constraintEnd_toEndOf="@id/video_player"
+            app:layout_constraintTop_toTopOf="@id/video_player"
+            app:layout_constraintStart_toStartOf="@id/video_player"
+            android:scaleX="0.4"
+            android:translationX="-120dp"
+            />
+
+        <Constraint
+            android:id="@+id/video_player_title"
+            app:layout_constraintTop_toTopOf="@id/video_player"
+            app:layout_constraintBottom_toBottomOf="@id/video_player"
+            app:layout_constraintEnd_toEndOf="@id/video_player"
+            app:layout_constraintStart_toStartOf="@id/video_player"
+            android:layout_marginStart="120dp"
+            android:layout_marginEnd="10dp"
+            />
+
     </ConstraintSet>
 
 </MotionScene>
