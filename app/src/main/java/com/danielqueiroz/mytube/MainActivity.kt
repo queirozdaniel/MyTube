@@ -4,9 +4,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.View
+import androidx.constraintlayout.motion.widget.MotionLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.GsonBuilder
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.video_detail.*
 import kotlinx.coroutines.*
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -24,8 +26,10 @@ class MainActivity : AppCompatActivity() {
 
         val videos: MutableList<Video> = mutableListOf<Video>()
         videoAdapter = VideoAdapter(videos) { video: Video ->
-            println(video)
+            showOverlayView(video)
         }
+
+        view_layer.alpha = 0f
 
         rv_main.layoutManager = LinearLayoutManager(this)
         rv_main.adapter = videoAdapter
@@ -38,7 +42,8 @@ class MainActivity : AppCompatActivity() {
                     videos.clear()
                     videos.addAll(listVideo.data)
                     videoAdapter.notifyDataSetChanged()
-                    progress_recycler.visibility = View.GONE
+                    motion_container.removeView(progress_recycler)
+                    //progress_recycler.visibility = View.GONE
                 }
             }
         }
@@ -47,6 +52,37 @@ class MainActivity : AppCompatActivity() {
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.main_menu, menu)
         return super.onCreateOptionsMenu(menu)
+    }
+
+    private fun showOverlayView(video: Video){
+        view_layer.animate().apply {
+            duration = 400
+            alpha(0.5f)
+        }
+
+        motion_container.setTransitionListener(object : MotionLayout.TransitionListener{
+            override fun onTransitionStarted(motionLayout: MotionLayout?, startId: Int, endId: Int) {
+                println("Transition Started $startId $endId")
+            }
+
+            override fun onTransitionChange(motionLayout: MotionLayout?, startId: Int, endId: Int, progress: Float) {
+                println("Transition Change $startId $endId $progress")
+
+                if (progress > 0.5f)
+                    view_layer.alpha = 1.0f - progress
+                else
+                    view_layer.alpha = 0.5f
+            }
+
+            override fun onTransitionCompleted(motionLayout: MotionLayout?, currentId: Int) {
+                println("Transition Completed $currentId")
+            }
+
+            override fun onTransitionTrigger(motionLayout: MotionLayout?, triggerId: Int, positive: Boolean, progress: Float) {
+                println("Transition Trigger $triggerId $positive $progress")
+            }
+
+        })
     }
 
     private fun getVideo(): ListVideo? {
