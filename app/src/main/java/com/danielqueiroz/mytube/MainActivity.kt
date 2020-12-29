@@ -7,8 +7,10 @@ import android.view.View
 import androidx.constraintlayout.motion.widget.MotionLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.GsonBuilder
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.video_detail.*
+import kotlinx.android.synthetic.main.video_detail_content.*
 import kotlinx.coroutines.*
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -78,6 +80,17 @@ class MainActivity : AppCompatActivity() {
             }
 
         })
+
+        val detailAdapter = VideoDetailAdapter(videos())
+        rv_similar.layoutManager = LinearLayoutManager(this)
+        rv_similar.adapter = detailAdapter
+
+        content_channel.text = video.publisher.name
+        content_title.text = video.title
+        Picasso.get().load(video.publisher.pictureProfileUrl).into(img_channel)
+
+        detailAdapter.notifyDataSetChanged()
+
     }
 
     private fun getVideo(): ListVideo? {
