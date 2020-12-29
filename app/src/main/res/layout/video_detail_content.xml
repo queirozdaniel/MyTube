@@ -1,11 +1,164 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    >
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/content_title"
+        android:text="Ola mundo"
+        android:layout_marginTop="12dp"
+        android:paddingStart="12dp"
+        android:layout_marginEnd="12dp"
+        android:textColor="#000"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="7.7M views"
+        />
+
+    <LinearLayout
+        android:paddingStart="8dp"
+        android:paddingEnd="12dp"
+        android:weightSum="5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatButton
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:drawableTop="@drawable/ic_thumb_up_black_24dp"
+            android:text="25K"
+            android:textAllCaps="false"
+            android:textSize="12sp"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:drawableTop="@drawable/ic_thumb_down_black_24dp"
+            android:text="3.8K"
+            android:textAllCaps="false"
+            android:textSize="12sp"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:drawableTop="@drawable/ic_share_black_24dp"
+            android:text="Share"
+            android:textAllCaps="false"
+            android:textSize="12sp"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:drawableTop="@drawable/ic_file_download_black_24dp"
+            android:text="Download"
+            android:textAllCaps="false"
+            android:textSize="12sp"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:drawableTop="@drawable/ic_playlist_add_black2_24dp"
+            android:text="Save"
+            android:textAllCaps="false"
+            android:textSize="12sp"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
 
+
+    </LinearLayout>
+
+    <View
+        android:background="@android:color/darker_gray"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        />
+
+    <RelativeLayout
+        android:paddingTop="6dp"
+        android:paddingBottom="6dp"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img_channel"
+            android:src="@drawable/ic_launcher_background"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            />
+
+        <TextView
+            android:id="@+id/content_channel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/img_channel"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:text="Channel"
+            android:textColor="#000"
+            android:textSize="16sp"
+            />
+
+        <TextView
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:layout_below="@id/content_channel"
+            android:layout_toEndOf="@id/img_channel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="16M subscribers"
+            />
+
+        <androidx.appcompat.widget.AppCompatButton
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:text="Subscribe"
+            android:textColor="@color/colorPrimary"
+            android:drawableStart="@drawable/icon_yt"
+            android:drawablePadding="8dp"
+            />
+
+    </RelativeLayout>
+
+    <View
+        android:background="@android:color/darker_gray"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_similar"
+        android:layout_marginTop="12dp"
+        android:layout_marginStart="12dp"
+        tools:listitem="@layout/video_detail_list_item_video"
+        tools:itemCount="10"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
 
 </LinearLayout>
